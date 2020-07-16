@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+
+from decouple import config
+
 # Separar codigos da instância que não são do projeto.
 from decouple import config
 # Para usar o sqlite3 em desenvolvimento e o postgresql em produção.
