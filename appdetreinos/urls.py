@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path
 
 from appdetreinos.core.views import home
+from appdetreinos.evaluations.views import evaluation
 
 urlpatterns = [
     path('', home),
     path('admin/', admin.site.urls),
+    path('avaliacao/', evaluation),
 ]

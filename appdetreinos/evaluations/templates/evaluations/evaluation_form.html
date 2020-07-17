@@ -1,0 +1,50 @@
+<hi>Formulário de Avaliação</hi>
+<form action="." method="post">
+{% csrf_token %}
+    <p>
+        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+        {{ form.name.errors }}
+        {{ form.name }}
+    </p>
+    <p>
+        <label for="{{ form.date.id_for_label }}">{{ form.date.label }}</label>
+        {{ form.date.errors }}
+        {{ form.date }}
+    </p>
+    <p>
+        <label for="{{ form.age.id_for_label }}">{{ form.age.label }}</label>
+        {{ form.age.errors }}
+        {{ form.age }}
+    </p>
+    <p>
+        <label for="{{ form.weight.id_for_label }}">{{ form.weight.label }}</label>
+        {{ form.weight.errors }}
+        {{ form.weight }}
+    </p>
+    <p>
+        <label for="{{ form.height.id_for_label }}">{{ form.height.label }}</label>
+        {{ form.height.errors }}
+        {{ form.height }}
+    </p>
+    <p>
+        <label for="{{ form.bf.id_for_label }}">{{ form.bf.label }}</label>
+        {{ form.bf.errors }}
+        {{ form.bf }}
+    </p>
+    <p>
+        <label for="{{ form.pathology.id_for_label }}">{{ form.pathology.label }}</label>
+        {{ form.pathology.errors }}
+        {{ form.pathology }}
+    </p>
+    <p>
+        <label for="{{ form.objective.id_for_label }}">{{ form.objective.label }}</label>
+        {{ form.objective.errors }}
+        {{ form.objective }}
+    </p>
+    <p>
+        <label for="{{ form.conditioning.id_for_label }}">{{ form.conditioning.label }}</label>
+        {{ form.conditioning.errors }}
+        {{ form.conditioning }}
+    </p>
+    <input type="submit" value="Enviar"/>
+</form>
