@@ -1,8 +1,5 @@
 from django.test import TestCase
 
-from appdetreinos.evaluations.forms import EvaluationForm
-
-
 class EvaluationTest(TestCase):
     def setUp(self):
         self.response = self.client.get('/avaliacao/')
@@ -29,14 +26,25 @@ class EvaluationTest(TestCase):
         '''Html must contain csrf '''
         self.assertContains(self.response, 'csrfmiddlewaretoken')
 
-    def test_has_form(self):
-        '''Context must have subscription form'''
-        form = self.response.context['form']
-        self.assertIsInstance(form, EvaluationForm)
 
-    def test_form_has_fields(self):
-        '''Form must have 9 fields'''
-        form = self.response.context['form']
-        self.assertSequenceEqual([
-            'name', 'date', 'age', 'weight', 'height', 'bf', 'pathology', 'objective', 'conditioning'
-        ], list(form.fields))
+class EvaluationPostTest(TestCase):
+    def setUp(self):
+        '''Valid POST should redirect to /avaliacao/'''
+        data = dict(
+            name='Luis Tavares',
+            date='17/07/2020',
+            age='29',
+            weight='97',
+            height='1.80',
+            bf='30',
+            pathology='ombro',
+            objective='emagrecer',
+            conditioning='fraco'
+        )
+        self.response = self.client.post('/avaliacao/', data)
+
+class EvalutionInvalidPost(TestCase):
+    def test_post(self):
+        '''Invalid POST should not redirect'''
+        response = self.client.post('/avaliacao/', {})
+        self.assertEqual(200, response.status_code)
